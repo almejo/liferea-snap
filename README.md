@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="Liferea">
+  <img src="https://raw.githubusercontent.com/almejo/liferea-snap/master/liferea-icon.png?s=256" alt="Liferea">
   <br />
-  [Liferea]
+  Liferea
 </h1>
 
 <p align="center"><b>This is the snap for liferea</b>, <i>“”Liferea is a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
