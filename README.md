@@ -19,7 +19,7 @@ distributions.</p>
 
 ## Install
 
-    sudo snap install liferea
+    sudo snap install liferea --edge --devmode
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/liferea)
 
@@ -38,7 +38,7 @@ upstream so Liferea can authoritatively publish future releases.
   - [x] Click the green "Use this template" button above to create a new repository based on this template
   - [x] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
   - [x] Update the description of the repository
-  - [ ] Update logos and references to `[Project]` and `[my-snap-name]`
+  - [x] Update logos and references to `[Project]` and `[my-snap-name]`
   - [x] Create a snap that runs in `devmode`
   - [x] Register the snap in the store, **using the preferred upstream name**
   - [x] Add a screenshot to this `README.md`
