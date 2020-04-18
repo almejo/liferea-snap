@@ -9,10 +9,12 @@ description: |
   client, with an embedded web browser.
 
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict 
 
 apps:
   liferea:
+    slots:
+    - dbus-liferea
     extensions: [gnome-3-28]
     desktop: usr/share/applications/net.sourceforge.liferea.desktop
     command: desktop-launch $SNAP/usr/bin/liferea
@@ -25,9 +27,15 @@ apps:
       - gsettings
       - network
       - network-bind
-      - wayland # let it run on wayland, because it's gtk3 so it should be fine
-      - desktop # needed for a lot of gtk3 and glib interaction with the host system
+      - wayland 
+      - desktop 
       - desktop-legacy #
+
+slots:
+  dbus-liferea:
+    interface: dbus
+    bus: session
+    name: net.sourceforge.liferea
 
 
 parts:
