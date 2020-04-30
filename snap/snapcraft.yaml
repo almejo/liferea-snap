@@ -8,7 +8,7 @@ description: |
   it easy to organize and browse feeds. Its GUI is similar to a desktop mail/news 
   client, with an embedded web browser.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable
 confinement: strict 
 
 apps:
@@ -20,6 +20,10 @@ apps:
     command: desktop-launch $SNAP/usr/bin/liferea
     environment: 
         XDG_DATA_DIR: $HOME
+        GIT_TEMPLATE_DIR: $SNAP/usr/share/git-core/templates
+        GIT_CONFIG_NOSYSTEM: "true"
+        GIT_EXEC_PATH: $SNAP/usr/lib/git-core
+        GIT_TEXTDOMAINDIR: $SNAP/usr/share/locale
     plugs:
       - home
       - x11
@@ -94,6 +98,8 @@ parts:
       - gir1.2-notify-0.7
       - python3-cairo
       - python3-gi-cairo
+      - appmenu-gtk3-module
+      - libcurl4-openssl-dev
     build-packages:
       - intltool
       - flex
