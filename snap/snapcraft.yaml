@@ -2,6 +2,7 @@ name: liferea
 base: core18 
 version: 'v1.12.7'
 summary: Liferea is a desktop feed reader/news aggregator
+license: GPL-2.0
 description: |
   Liferea is a desktop feed reader/news aggregator that brings together all of
   the content from your favorite subscriptions into a simple interface that makes 
@@ -38,7 +39,7 @@ apps:
     slots:
     - dbus-liferea
     extensions: [gnome-3-28]
-    command: $SNAP/usr/bin/liferea-add-feed
+    command: usr/bin/liferea-add-feed
     environment:
         XDG_DATA_DIR: $HOME
     plugs:
