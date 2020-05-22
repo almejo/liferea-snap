@@ -39,6 +39,7 @@ apps:
       - wayland 
       - desktop 
       - desktop-legacy #
+      - opengl
   liferea-add-feed:
     slots:
     - dbus-liferea
