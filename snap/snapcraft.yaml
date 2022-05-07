@@ -1,6 +1,6 @@
 name: liferea 
 base: core18 
-version: 'v1.12.7'
+version: '1.13.8'
 summary: Liferea is a desktop feed reader/news aggregator
 license: GPL-2.0
 description: |
@@ -81,7 +81,7 @@ parts:
     source: https://github.com/lwindolf/liferea.git
     source-type: git
     plugin: autotools
-    source-tag: v1.12.7
+    source-tag: v1.13.8
     override-build: |
       ./autogen.sh
       ./configure --prefix=/usr
@@ -106,6 +106,7 @@ parts:
       - python3-gi-cairo
       - appmenu-gtk3-module
       - libcurl4-openssl-dev
+      - libfribidi0
     build-packages:
       - intltool
       - flex
@@ -118,3 +119,4 @@ parts:
       - libxslt1-dev
       - gsettings-desktop-schemas-dev
       - libgirepository1.0-dev
+      - libfribidi-dev
