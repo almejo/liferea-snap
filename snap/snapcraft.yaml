@@ -15,7 +15,8 @@ adopt-info: liferea
 
 architectures:
   - build-on: amd64
-    run-on: amd64
+  - build-on: arm64
+  - build-on: armhf
 
 apps:
   liferea:
