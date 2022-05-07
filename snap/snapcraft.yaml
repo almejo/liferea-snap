@@ -1,6 +1,5 @@
 name: liferea 
 base: core18 
-version: '1.13.8'
 summary: Liferea is a desktop feed reader/news aggregator
 license: GPL-2.0
 description: |
@@ -12,6 +11,7 @@ description: |
 grade: stable
 confinement: strict 
 compression: lzo
+adopt-info: liferea
 
 architectures:
   - build-on: amd64
@@ -78,6 +78,7 @@ parts:
   liferea:
     override-pull: |
       snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//')"
       sed -i.bak -e 's|Icon=liferea|Icon=/usr/share/icons/hicolor/scalable/apps/liferea.svg|g' net.sourceforge.liferea.desktop.in
     source: https://github.com/lwindolf/liferea.git
     source-type: git
