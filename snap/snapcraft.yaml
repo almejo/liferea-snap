@@ -42,6 +42,7 @@ apps:
       - desktop 
       - desktop-legacy #
       - opengl
+      - audio-playback
   liferea-add-feed:
     slots:
     - dbus-liferea
@@ -96,8 +97,10 @@ parts:
       - python3-gi
       - git
       - python-gi
-      - libgstreamer-gl1.0-0
-      - libgstreamer-plugins-bad1.0-0
+      - gstreamer1.0-alsa
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-pulseaudio
       - libgstreamer-plugins-base1.0-0
       - libgstreamer-plugins-good1.0-0
       - libgstreamer1.0-0
@@ -110,6 +113,11 @@ parts:
       - appmenu-gtk3-module
       - libcurl4-openssl-dev
       - libfribidi0
+      - libgl1
+      - libglu1-mesa
+      - freeglut3
+      - libgpm2
+      - libslang2
     build-packages:
       - intltool
       - flex
