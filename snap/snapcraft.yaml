@@ -1,6 +1,5 @@
 name: liferea 
 base: core18 
-version: 'v1.12.7'
 summary: Liferea is a desktop feed reader/news aggregator
 license: GPL-2.0
 description: |
@@ -11,10 +10,13 @@ description: |
 
 grade: stable
 confinement: strict 
+compression: lzo
+adopt-info: liferea
 
 architectures:
   - build-on: amd64
-    run-on: amd64
+  - build-on: arm64
+  - build-on: armhf
 
 apps:
   liferea:
@@ -40,6 +42,7 @@ apps:
       - desktop 
       - desktop-legacy #
       - opengl
+      - audio-playback
   liferea-add-feed:
     slots:
     - dbus-liferea
@@ -77,11 +80,12 @@ parts:
   liferea:
     override-pull: |
       snapcraftctl pull
-      sed -i.bak -e 's|Icon=liferea|Icon=/usr/share/icons/hicolor/scalable/apps/liferea.svg|g' net.sourceforge.liferea.desktop.in
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//')"
+      sed -i.bak -E 's|Icon=.+|Icon=/usr/share/icons/hicolor/scalable/apps/net.sourceforge.liferea.svg|g' net.sourceforge.liferea.desktop.in
     source: https://github.com/lwindolf/liferea.git
     source-type: git
     plugin: autotools
-    source-tag: v1.12.7
+    source-tag: v1.13.8
     override-build: |
       ./autogen.sh
       ./configure --prefix=/usr
@@ -93,8 +97,10 @@ parts:
       - python3-gi
       - git
       - python-gi
-      - libgstreamer-gl1.0-0
-      - libgstreamer-plugins-bad1.0-0
+      - gstreamer1.0-alsa
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-pulseaudio
       - libgstreamer-plugins-base1.0-0
       - libgstreamer-plugins-good1.0-0
       - libgstreamer1.0-0
@@ -106,6 +112,12 @@ parts:
       - python3-gi-cairo
       - appmenu-gtk3-module
       - libcurl4-openssl-dev
+      - libfribidi0
+      - libgl1
+      - libglu1-mesa
+      - freeglut3
+      - libgpm2
+      - libslang2
     build-packages:
       - intltool
       - flex
@@ -118,3 +130,4 @@ parts:
       - libxslt1-dev
       - gsettings-desktop-schemas-dev
       - libgirepository1.0-dev
+      - libfribidi-dev
